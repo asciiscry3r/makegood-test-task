@@ -1,0 +1,3 @@
+[submodule "NodeJS/makegood"]
+	path = NodeJS/makegood
+	url = https://github.com/flour/makegood

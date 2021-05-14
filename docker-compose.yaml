@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  web:
+    image: nginx:latest
+    configs:
+      - source: nginx_config
+        mode: 0600
+
+  node:
+    image: makegood-nodejs:latest
+    ports:
+      - 3000:3000
+
+configs:
+  nginx_config:
+    file: default.conf
+
+networks:
+  makegood:
+    external: true
