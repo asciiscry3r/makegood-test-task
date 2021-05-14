@@ -1,20 +1,18 @@
 #!/usr/bin/env sh
 
 if [ -d NodeJS ]; then
-	cd NodeJS && docker build -t makegood-nodejs . && cd ..
+	cd NodeJS
+        [ -d makegood  ] && cd makegood && git pull && cd .. || git clone https://github.com/flour/makegood
+	docker build -t makegood-nodejs . && cd ..
 else
-	echo "Sorry but we lost our Dokerfile"
+	echo "Sorry but we lost our NodeJS files"
 fi
 
-if [ -d NodeJS/makegood ]; then
-	cd NodeJS/makegood && git pull && cd ../..
+if [ -d nginx ]; then
+	cd nginx && docker build -t makeggod-nginx . && cd ..
 else
-	git pull https://github.com/nginxinc/docker-nginx.git NodeJS/makegood
+	echo "Sorry but we lost our Nginx files"
 fi
 
 
-
-docker swarm init
-
-docker stack deploy -c docker-compose.yaml makegood
 
