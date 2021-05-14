@@ -1,9 +1,9 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+git submodule update --init --recursive
 
 if [ -d NodeJS ]; then
-	cd NodeJS
-        [ -d makegood  ] && cd makegood && git pull && cd .. || git clone https://github.com/flour/makegood
-	docker build -t makegood-nodejs . && cd ..
+	cd NodeJS && docker build -t makegood-nodejs . && cd ..
 else
 	echo "Sorry but we lost our NodeJS files"
 fi
@@ -13,6 +13,4 @@ if [ -d nginx ]; then
 else
 	echo "Sorry but we lost our Nginx files"
 fi
-
-
 
