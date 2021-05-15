@@ -131,6 +131,8 @@ resource "null_resource" "makegood" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo apt update && sudo apt upgrade -y",
+      "echo y | sudo ufw enable && sudo ufw allow OpenSSH && sudo ufw allow 443",
       "curl -fsSL https://get.docker.com -o get-docker.sh",
       "sudo sh get-docker.sh",
       "sudo rm -rf makegood && git clone https://github.com/asciiscry3r/makegood-test-task.git makegood",
