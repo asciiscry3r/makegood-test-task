@@ -16,3 +16,5 @@ else
 	echo "Sorry but we lost our Nginx files"
 fi
 
+docker-compose up -d
+

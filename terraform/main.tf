@@ -8,7 +8,7 @@ terraform {
 }
 
 variable "zone_id" {
-  default = "Z08690643G2MCG6F1C5D7"
+  default = ""
 }
 
 variable "vpc_id_main" {
@@ -54,7 +54,7 @@ resource "aws_security_group" "makegood-allow" {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = ["108.61.39.2/32"]
+    cidr_blocks      = ["0.0.0.0/0"]
 #    ipv6_cidr_blocks = [data.aws_vpc.selected.ipv6_cidr_block]
   }
 
@@ -84,6 +84,7 @@ resource "aws_instance" "makegood-ec2" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.makegood-key.key_name
+  iam_instance_profile   = "arn:aws:iam:::role/makegood-ec2-access-to-route53"
   vpc_security_group_ids = [aws_security_group.makegood-allow.id]
 
   tags = {
