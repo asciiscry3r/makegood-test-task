@@ -1,6 +1,6 @@
-.vagrant
+.vagrant/*
 terraform/.terraform
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 NodeJS/makegoood
-
+certbot/*
