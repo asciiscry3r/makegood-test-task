@@ -27,5 +27,7 @@ else
 	echo "Sorry but we lost our Certbot files"
 fi
 
+sudo docker run -it -v $(pwd)/certbot/conf:/etc/letsencrypt -v $(pwd)/certbot/www:/var/www/certbot makegood-certbot:latest certonly --agree-tos -m klimenkomaximsergievich@gmail.com  --dns-route53 --domains makegood.mksplayground.online
+
 sudo docker-compose up -d
 
