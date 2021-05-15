@@ -9,16 +9,22 @@ if [ ! -f "/usr/local/bin/docker-compose" ]; then
 	sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-if [ -d NodeJS ]; then
-	cd NodeJS && sudo docker build -t makegood-nodejs . && cd ..
+if [ -d nodejs-docker ]; then
+	cd nodejs-docker && sudo docker build -t makegood-nodejs . && cd ..
 else
 	echo "Sorry but we lost our NodeJS files"
 fi
 
-if [ -d nginx ]; then
+if [ -d nginx-docker ]; then
 	cd nginx-docker && sudo docker build -t makeggod-nginx . && cd ..
 else
 	echo "Sorry but we lost our Nginx files"
+fi
+
+if [ -d certbot-docker ]; then
+	cd certbot-docker && sudo docker build -t makegood-certbot . && cd ..
+else
+	echo "Sorry but we lost our Certbot files"
 fi
 
 sudo docker-compose up -d
