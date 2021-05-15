@@ -143,8 +143,12 @@ resource "null_resource" "makegood" {
        type        = "ssh"
        user        = "ubuntu"
        private_key = file(var.private_key_path)
-       host        = var.dns_name
+       host        = aws_instance.makegood-ec2.public_ip
     }
   }
+
+  depends_on = [
+    aws_instance.makegood-ec2
+  ]
 }
 
