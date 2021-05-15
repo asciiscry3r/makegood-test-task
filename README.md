@@ -1,6 +1,6 @@
 # makegood-test-task
 
-TTGL
+TTGL ^_^
 
 # requirements
 
