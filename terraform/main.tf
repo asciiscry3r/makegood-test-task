@@ -127,16 +127,14 @@ resource "aws_route53_record" "makegood-www" {
   records = [aws_eip.makegood-eip.public_ip]
 }
 
-resource "null_resource" "cluster" {
+resource "null_resource" "makegood" {
 
   provisioner "remote-exec" {
     inline = [
       "curl -fsSL https://get.docker.com -o get-docker.sh",
       "sudo sh get-docker.sh",
       "sudo rm -rf makegood && git clone https://github.com/asciiscry3r/makegood-test-task.git makegood",
-      "cd makegood",
-      "chmod +x bootstrap.sh",
-      "./bootstrap.sh",
+      "cd makegood && chmod +x bootstrap.sh && ./bootstrap.sh",
     ]
 
     connection {
