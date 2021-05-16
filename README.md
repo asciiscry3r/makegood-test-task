@@ -12,7 +12,9 @@ godaddy dns and time for shift name servers
 
 # install
 
-set your variables in terraform/main.tf and:
+Create IAM terraform user with access to ec2 and some iam function,
+Create instance role with ability to create dns record.
+Set your variables in terraform/main.tf and:
 
 ```
 terraform apply
