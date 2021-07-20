@@ -20,5 +20,4 @@ Set your variables in terraform/main.tf and:
 terraform apply
 ```
 
-CC-BY-NC-ND-4.0
-
+MIT
